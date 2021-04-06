@@ -34,6 +34,7 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 ### Known bugs fixing:
 
 * :black_square_button: AAR not starting due to old Arma2 scripting.
+* :black_square_button: Software works only with 32-bit Arma3
 
 
 ### Thanks to:
