@@ -4,11 +4,13 @@
 
 This project is an attempt top revive the system from Arma2 https://github.com/zvukoper/Arma2AAR
 
+
 ### Roadmap:
 
 * :ballot_box_with_check: Custom software to write replay files to disk.
 * :black_square_button: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
 * :black_square_button: Playpack a replay file with ability to spectate.
+* :black_square_button: Documentation: How to install and use.
 * :black_square_button: Unit and event icons on the map.
 * :black_square_button: Pause and resume a replay.
 * :black_square_button: Draw ballistic lines for projectiles colored by unit faction.
@@ -28,9 +30,11 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 * :black_square_button: Playback: add a global comment in the replay or a map marker comment.
 * :black_square_button: Convert the replay to a log with the selected events.
 
+
 ### Known bugs fixing:
 
 * :black_square_button: AAR not starting due to old Arma2 scripting.
+
 
 ### Thanks to:
 
