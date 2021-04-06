@@ -7,7 +7,7 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 
 ### Roadmap:
 
-* :ballot_box_with_check: Custom software to write replay files to disk.
+* :ballot_box_with_check: Custom software to write replay files to disk directly from Arma3.
 * :black_square_button: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
 * :black_square_button: Playpack a replay file with ability to spectate.
 * :black_square_button: Documentation: How to install and use.
