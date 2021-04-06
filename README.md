@@ -1,10 +1,10 @@
 # Arma3 After Action Review system
 
-## Record and replay your battle in Arma 3.
+## Record your battle in Arma3. Replay and spectate later.
 
 This project is an attempt top revive the system from Arma2 https://github.com/zvukoper/Arma2AAR
 
-Roadmap:
+### Roadmap:
 
 * :ballot_box_with_check: Custom software to write replay files to disk.
 * :black_square_button: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
@@ -28,6 +28,17 @@ Roadmap:
 * :black_square_button: Playback: add a global comment in the replay or a map marker comment.
 * :black_square_button: Convert the replay to a log with the selected events.
 
-Known bugs fixing:
+### Known bugs fixing:
 
 * :black_square_button: AAR not starting due to old Arma2 scripting.
+
+### Thanks to:
+
+* Cupcake Punisher for bringing the idea back to life after 10 years.
+* dalber24 for sharing the backup files.
+* @patroza (Sickboy) for all the help with scripting, hosting, etc.
+* Jaynus for his revolutionary arma2lib.
+* BIS for ... for everything :)
+* CBA team for CBA mod.
+* -=Russian Alliance=- squad for all the painful testing of the system back in Arma2.
+* All people out there on the forums who answered all my silly scripting questions.
