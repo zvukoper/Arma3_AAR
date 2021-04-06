@@ -9,11 +9,11 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 
 * :ballot_box_with_check: Custom software to write replay files to disk directly from Arma3.
 * :black_square_button: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
-* :black_square_button: Playpack a replay file with ability to spectate.
+* :black_square_button: Playback a replay file with the ability to spectate.
 * :black_square_button: Documentation: How to install and use.
 * :black_square_button: Unit and event icons on the map.
 * :black_square_button: Pause and resume a replay.
-* :black_square_button: Draw ballistic lines for projectiles colored by unit faction.
+* :black_square_button: Draw ballistic lines for projectiles colored by unit squad\faction.
 * :black_square_button: Filename generation for new replay files.
 * :black_square_button: Record ingame chat and system messages.
 * :black_square_button: User-defined filenames.
