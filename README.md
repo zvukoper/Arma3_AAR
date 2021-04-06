@@ -40,7 +40,7 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 
 * Cupcake Punisher for bringing the idea back to life after 10 years.
 * dalber24 for sharing the backup files.
-* @patroza (Sickboy) for all the help with scripting, hosting, etc.
+* Sickboy for all the help with scripting, hosting, etc.
 * Jaynus for his revolutionary arma2lib.
 * BIS for ... for everything :)
 * CBA team for CBA mod.
