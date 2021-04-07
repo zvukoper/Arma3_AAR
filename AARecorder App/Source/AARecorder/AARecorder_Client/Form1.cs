@@ -39,7 +39,7 @@ namespace AARecorder_Client
         {
 
 
-            if (pipeConnected)
+            if (!pipeConnected)
             {
                 armaCom.Dispose();
                 ConsoleOutput.Items.Add("AAR Shut down");

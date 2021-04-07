@@ -25,12 +25,5 @@ namespace AARecorder_Client
             
         }
     }
-    class PipesControl {
-        public void ActivatePipes()
-        {
 
-
-
-        }
-    }
 }
