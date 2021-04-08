@@ -22,8 +22,8 @@ namespace DZR_Arma3_ExtEmu
 
         private void ConnectToPipes()
         {
-            //throw new NotImplementedException();
-            
+            DZR_AAR_extenstion.DllEntry.Invoke("[\"openComPipes\", \"NULL\"]", 2000);
+
         }
 
         private void SEND_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace DZR_Arma3_ExtEmu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DZR_AAR_extenstion.DllEntry.Invoke("[\"openComPipes\", \"NULL\"]", 2000);
+            
         }
     }
 }
