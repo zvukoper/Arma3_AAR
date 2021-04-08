@@ -8,9 +8,9 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 ### Roadmap:
 
 * :ballot_box_with_check: Custom dll to link Arma3 with AARecorder.
-* :ballot_box_with_check: Custom software to write replay files to disk directly from Arma3.
-* :ballot_box_with_check: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
+* :black_square_button: Custom software to write replay files to disk directly from Arma3.
 * :black_square_button: Recreate the app for 64-bit and with filename generation.
+* :black_square_button: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
 * :black_square_button: Playback a replay file with the ability to spectate.
 * :black_square_button: Documentation: How to install and use.
 * :black_square_button: Unit and event icons on the map.
@@ -35,7 +35,6 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 
 ### Known bugs fixing:
 
-* :ballot_box_with_check: AAR not starting due to old Arma2 scripting.
 * :ballot_box_with_check: Software works only with 32-bit Arma3
 * :warning: Some errors in scripts prevent playback
 
@@ -47,6 +46,7 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 * dalber24 for sharing the backup files.
 * Sickboy for all the help with scripting, hosting, etc.
 * Jaynus for his revolutionary arma2lib.
+* Maca134 for his DLL export templates https://github.com/maca134/Maca134.Arma.DllExport
 * BIS for ... for everything :)
 * CBA team for CBA mod.
 * -=Russian Alliance=- squad for all the painful testing of the system back in Arma2.
