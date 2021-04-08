@@ -99,5 +99,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AARecorder\dzrarma3lib.csproj">
+      <Project>{b76bc81c-9fe1-4eb5-8cd5-2059601d32c2}</Project>
+      <Name>dzrarma3lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

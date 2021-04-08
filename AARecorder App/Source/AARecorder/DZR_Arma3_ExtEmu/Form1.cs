@@ -16,5 +16,13 @@ namespace DZR_Arma3_ExtEmu
         {
             InitializeComponent();
         }
+
+        private void SEND_Click(object sender, EventArgs e)
+        {
+            var ArmaCommand = ScriptInput.Text;
+            var CallbackData = DZR_AAR_extenstion.DllEntry.Invoke(ArmaCommand, 2000);
+            Response.Items.Add(CallbackData);
+
+        }
     }
 }

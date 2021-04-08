@@ -47,8 +47,9 @@
             this.SEND.Name = "SEND";
             this.SEND.Size = new System.Drawing.Size(75, 23);
             this.SEND.TabIndex = 1;
-            this.SEND.Text = "button1";
+            this.SEND.Text = "EXECUTE";
             this.SEND.UseVisualStyleBackColor = true;
+            this.SEND.Click += new System.EventHandler(this.SEND_Click);
             // 
             // Response
             // 

@@ -12,7 +12,23 @@ namespace DZR_AAR_extenstion
     {
         [ArmaDllExport]
         public static string Invoke(string input, int maxSize){
-        return input;
+
+            var response= "NOTHING TO RESPOND";
+            //get input from arma
+
+            //break it into data and command
+
+            //switch the input
+            switch (input) {
+                case "test":
+                    response = "test passed";
+                    break;
+            }
+            //openPipe
+            //writePipe
+            //readPipe
+            //closePipe
+            return response;
         }
     }
 }
