@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("AARecorder")]
+[assembly: AssemblyTitle("AARecorder2")]
 [assembly: AssemblyDescription("Aqcuires replay data from Arma3 and writes to file. https://github.com/zvukoper/Arma3_AAR ")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DayZRussia.com")]
-[assembly: AssemblyProduct("AARecorder")]
+[assembly: AssemblyProduct("AARecorder3")]
 [assembly: AssemblyCopyright("Copyright © Zvukoper 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
