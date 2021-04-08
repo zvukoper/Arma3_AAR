@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.IO.Pipes;
 
 namespace DZR_Arma3_ExtEmu
 {
-    public partial class Form1 : Form
+    public partial class ArmaEmuForm : Form
     {
-        public Form1()
+        public ArmaEmuForm()
         {
             InitializeComponent();
+            ConnectToPipes();
+        }
+
+        private void ConnectToPipes()
+        {
+            //throw new NotImplementedException();
+            
         }
 
         private void SEND_Click(object sender, EventArgs e)
@@ -23,6 +32,11 @@ namespace DZR_Arma3_ExtEmu
             var CallbackData = DZR_AAR_extenstion.DllEntry.Invoke(ArmaCommand, 2000);
             Response.Items.Add(CallbackData);
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DZR_AAR_extenstion.DllEntry.Invoke("[\"openComPipes\", \"NULL\"]", 2000);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AARecorder_Client
+﻿namespace AARecorder_Server
 {
     partial class AARecorder
     {
@@ -56,8 +56,8 @@
             this.Activate.TabIndex = 1;
             this.Activate.Text = "Activate";
             this.Activate.UseVisualStyleBackColor = true;
-            this.Activate.CheckedChanged += new System.EventHandler(this.Enable_CheckedChanged);
-            this.Activate.Click += new System.EventHandler(this.Enable_CheckedChanged);
+            //this.Activate.CheckedChanged += new System.EventHandler(this.Enable_CheckedChanged);
+            //this.Activate.Click += new System.EventHandler(this.Enable_CheckedChanged);
             // 
             // textBox1
             // 
@@ -115,7 +115,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Activate";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Enable_CheckedChanged);
+            //this.button1.Click += new System.EventHandler(this.Enable_CheckedChanged);
             // 
             // AARecorder
             // 

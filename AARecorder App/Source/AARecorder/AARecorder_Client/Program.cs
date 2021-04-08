@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AARecorder_Client
+namespace AARecorder_Server
 {
     static class Program
     {

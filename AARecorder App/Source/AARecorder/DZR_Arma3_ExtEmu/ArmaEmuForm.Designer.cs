@@ -1,6 +1,6 @@
 ﻿namespace DZR_Arma3_ExtEmu
 {
-    partial class Form1
+    partial class ArmaEmuForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -31,6 +31,7 @@
             this.ScriptInput = new System.Windows.Forms.TextBox();
             this.SEND = new System.Windows.Forms.Button();
             this.Response = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ScriptInput
@@ -40,7 +41,7 @@
             this.ScriptInput.Name = "ScriptInput";
             this.ScriptInput.Size = new System.Drawing.Size(729, 242);
             this.ScriptInput.TabIndex = 0;
-            this.ScriptInput.Text = "[\"test\", \"DATA_FROM_ARMA\"]";
+            this.ScriptInput.Text = "[\"openPipe\", \"delphiCom\"]";
             // 
             // SEND
             // 
@@ -50,7 +51,6 @@
             this.SEND.TabIndex = 1;
             this.SEND.Text = "EXECUTE";
             this.SEND.UseVisualStyleBackColor = true;
-            this.SEND.Click += new System.EventHandler(this.SEND_Click);
             // 
             // Response
             // 
@@ -60,15 +60,26 @@
             this.Response.Size = new System.Drawing.Size(729, 147);
             this.Response.TabIndex = 2;
             // 
-            // Form1
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(31, 269);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "comPipes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ArmaEmuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 527);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Response);
             this.Controls.Add(this.SEND);
             this.Controls.Add(this.ScriptInput);
-            this.Name = "Form1";
+            this.Name = "ArmaEmuForm";
             this.Text = "DZR Arma3 Extension Emulator";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -80,6 +91,7 @@
         private System.Windows.Forms.TextBox ScriptInput;
         private System.Windows.Forms.Button SEND;
         private System.Windows.Forms.ListBox Response;
+        private System.Windows.Forms.Button button1;
     }
 }
 

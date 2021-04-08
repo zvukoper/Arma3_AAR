@@ -41,8 +41,22 @@ namespace DZR_AAR_extenstion
                 //openPipe
                 case "openPipe":
 
-                    NamedPipeClientStream armaCom = new NamedPipeClientStream(data);
+                    NamedPipeClientStream thePipe = new NamedPipeClientStream(data);
+                    thePipe.Connect();
+                    var PipeConnected = thePipe.IsConnected;
+                    response = string.Format("Connecing to pipe {1}. Available servers: {0}", thePipe.NumberOfServerInstances.ToString(), data);
+                    break;
+
+                case "openComPipes":
+
+                    NamedPipeClientStream armaCom = new NamedPipeClientStream("armaCom");
                     armaCom.Connect();
+                    response = string.Format("Connecing to pipe armaCom. Available servers: {0}", armaCom.NumberOfServerInstances.ToString());
+
+                    NamedPipeClientStream delphiCom = new NamedPipeClientStream("delphiCom");
+                    delphiCom.Connect();
+                    response = string.Format("Connecing to pipe delphiCom. Available servers: {0}", delphiCom.NumberOfServerInstances.ToString());
+
                     break;
                     //writePipe
                     //readPipe

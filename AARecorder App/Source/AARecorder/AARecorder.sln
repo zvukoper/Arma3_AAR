@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dzrarma3lib", "AARecorder\d
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZR_Arma3_ExtEmu", "DZR_Arma3_ExtEmu\DZR_Arma3_ExtEmu.csproj", "{D6388135-0916-48F1-8E65-18C431619779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AARecorder_Client", "AARecorder_Client\AARecorder_Client.csproj", "{7243F3E2-6EDE-4616-A149-16C549A2326B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AARecorder_Server", "AARecorder_Client\AARecorder_Server.csproj", "{7243F3E2-6EDE-4616-A149-16C549A2326B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
