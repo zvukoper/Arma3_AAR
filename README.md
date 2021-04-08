@@ -7,6 +7,7 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 
 ### Roadmap:
 
+* :ballot_box_with_check: Custom dll to link Arma3 with AARecorder.
 * :ballot_box_with_check: Custom software to write replay files to disk directly from Arma3.
 * :ballot_box_with_check: Record a replay into an .aar file: unit actions, including gear, animations, unit model, shooting, death, vehicle operation, commands.
 * :black_square_button: Recreate the app for 64-bit and with filename generation.
@@ -35,8 +36,9 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 ### Known bugs fixing:
 
 * :ballot_box_with_check: AAR not starting due to old Arma2 scripting.
+* :ballot_box_with_check: Software works only with 32-bit Arma3
 * :warning: Some errors in scripts prevent playback
-* :warning: Software works only with 32-bit Arma3
+
 
 
 ### Thanks to:
