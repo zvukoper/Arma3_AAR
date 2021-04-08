@@ -40,6 +40,7 @@
             this.ScriptInput.Name = "ScriptInput";
             this.ScriptInput.Size = new System.Drawing.Size(729, 242);
             this.ScriptInput.TabIndex = 0;
+            this.ScriptInput.Text = "[\"test\", \"DATA_FROM_ARMA\"]";
             // 
             // SEND
             // 
