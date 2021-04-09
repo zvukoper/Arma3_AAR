@@ -13,18 +13,20 @@ using System.Windows.Forms;
 
 namespace AARecorder_Server
 {
-    
-
-
     public partial class AARecorder : Form
     {
 
+        /*
+         TODO: 
+         * Add logging to all functions
+         * Try reading emulated arma arrays
 
+        */
 
         public AARecorder()
         {
             InitializeComponent();
-            //Setup();
+            AndreyIM_Log.Logger.RichTextBoxLogger = myTextBoxLog;
         }
 
         public async void Setup()
@@ -92,6 +94,13 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         }
 
+        /* Snippet for future use in threads
+        BeginInvoke(new Action(() => label.Text = "Complete"));
+        BeginInvoke(new Action(() =>
+        {
+            this.Text = finishLoadEvent.Browser.URL;
+        })); */
+
         private void ServerSend(NamedPipeServerStream thePipe, string theMessage, Button theButton)
         {
             new Thread(() =>
@@ -99,7 +108,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 theButton.BackColor = Color.Lime;
                 byte[] messageBytes = Encoding.UTF8.GetBytes(theMessage);
                 thePipe.Write(messageBytes, 0, messageBytes.Length);
-                //ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
+                AndreyIM_Log.Logger.WriteLog(string.Format("Sending {0} to {1}", theMessage, thePipe), Color.Green);
                 theButton.BackColor = Color.Lime;
             }).Start();
         }

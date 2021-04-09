@@ -56,6 +56,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.myTextBoxLog = new System.Windows.Forms.RichTextBox();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,6 +106,7 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.myTextBoxLog);
             this.MainPanel.Controls.Add(this.label4);
             this.MainPanel.Controls.Add(this.label3);
             this.MainPanel.Controls.Add(this.button19);
@@ -343,6 +345,14 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Arma + armalib.dll";
             // 
+            // myTextBoxLog
+            // 
+            this.myTextBoxLog.Location = new System.Drawing.Point(415, 68);
+            this.myTextBoxLog.Name = "myTextBoxLog";
+            this.myTextBoxLog.Size = new System.Drawing.Size(348, 287);
+            this.myTextBoxLog.TabIndex = 26;
+            this.myTextBoxLog.Text = "";
+            // 
             // AARecorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +400,7 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox myTextBoxLog;
     }
 }
 
