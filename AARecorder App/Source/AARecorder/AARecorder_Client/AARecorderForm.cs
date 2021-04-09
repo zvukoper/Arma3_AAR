@@ -57,15 +57,50 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
         NamedPipeClientStream delphiComC;
         NamedPipeClientStream armaComC;
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ServerWait(NamedPipeServerStream thePipe, string theMessage, Button theButton) {
+            StringBuilder messageBuilder = new StringBuilder();
+            var response = "";
+            string messageChunk = string.Empty;
+            byte[] messageBuffer = new byte[5];
+            theButton.BackColor = Color.Orange;
+
+            new Thread(() =>
+            {
+                do
+                {
+                    thePipe.WaitForPipeDrain();
+                    thePipe.Read(messageBuffer, 0, messageBuffer.Length);
+                    messageChunk = Encoding.UTF8.GetString(messageBuffer);
+                    messageBuilder.Append(messageChunk);
+                    messageBuffer = new byte[messageBuffer.Length];
+                    response = messageBuilder.ToString();
+                }
+                while ((!thePipe.IsMessageComplete) && (response == theMessage));
+                theButton.BackColor = Color.Lime;
+            }).Start();
+        }
+
+        private void ServerSend(NamedPipeServerStream thePipe, string theMessage, Button theButton)
         {
+            new Thread(() =>
+            {
+                theButton.BackColor = Color.Lime;
+                byte[] messageBytes = Encoding.UTF8.GetBytes(theMessage);
+                thePipe.Write(messageBytes, 0, messageBytes.Length);
+                ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
+                theButton.BackColor = Color.Lime;
+            }).Start();
+        }
+
+        private void ServerSetup()
+        { 
             armaDataS = new NamedPipeServerStream("armaData", PipeDirection.InOut, 1, PipeTransmissionMode.Message);
             delphiDataS = new NamedPipeServerStream("delphiData", PipeDirection.InOut, 1, PipeTransmissionMode.Message);
             delphiComS = new NamedPipeServerStream("delphiCom", PipeDirection.InOut, 1, PipeTransmissionMode.Message);
             armaComS = new NamedPipeServerStream("armaCom", PipeDirection.InOut, 1, PipeTransmissionMode.Message);
             button2.BackColor = Color.Orange;
-            new Thread(() =>
-            {
+                new Thread(() =>
+                {
                 Thread.CurrentThread.IsBackground = true;
                 armaDataS.WaitForConnection();
                 delphiDataS.WaitForConnection();
@@ -73,11 +108,45 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 armaComS.WaitForConnection();
                 button2.BackColor = Color.Lime;
             }).Start();
-
-
         }
 
-        private void button19_Click(object sender, EventArgs e)
+    private void ClientWait(NamedPipeClientStream thePipe, string theMessage, Button theButton)
+        {
+            StringBuilder messageBuilder = new StringBuilder();
+            var response = "";
+            string messageChunk = string.Empty;
+            byte[] messageBuffer = new byte[5];
+            theButton.BackColor = Color.Orange;
+
+            new Thread(() =>
+            {
+                do
+                {
+                    thePipe.WaitForPipeDrain();
+                    thePipe.Read(messageBuffer, 0, messageBuffer.Length);
+                    messageChunk = Encoding.UTF8.GetString(messageBuffer);
+                    messageBuilder.Append(messageChunk);
+                    messageBuffer = new byte[messageBuffer.Length];
+                    response = messageBuilder.ToString();
+                }
+                while ((!thePipe.IsMessageComplete) && (response == theMessage));
+                theButton.BackColor = Color.Lime;
+            }).Start();
+        }
+
+        private void ClientSend(NamedPipeClientStream thePipe, string theMessage, Button theButton)
+        {
+            new Thread(() =>
+            {
+                theButton.BackColor = Color.Lime;
+                byte[] messageBytes = Encoding.UTF8.GetBytes(theMessage);
+                thePipe.Write(messageBytes, 0, messageBytes.Length);
+                ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
+                theButton.BackColor = Color.Lime;
+            }).Start();
+        }
+
+        private void ClientSetup ()
         {
             armaDataC = new NamedPipeClientStream("armaData");
             delphiDataC = new NamedPipeClientStream("delphiData");
@@ -86,99 +155,52 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
             button19.BackColor = Color.Orange;
             new Thread(() =>
             {
-            armaDataC.Connect();
+                armaDataC.Connect();
                 armaDataC.ReadMode = PipeTransmissionMode.Message;
-            delphiDataC.Connect();
+                delphiDataC.Connect();
                 delphiDataC.ReadMode = PipeTransmissionMode.Message;
-            delphiComC.Connect();
+                delphiComC.Connect();
                 delphiComC.ReadMode = PipeTransmissionMode.Message;
-            armaComC.Connect();
+                armaComC.Connect();
                 armaComC.ReadMode = PipeTransmissionMode.Message;
                 button19.BackColor = Color.Lime;
             }).Start();
         }
 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ServerSetup();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            ClientSetup();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            StringBuilder messageBuilder = new StringBuilder();
-            var response = "";
-            string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[5];
-            button3.BackColor = Color.Orange;
-            var loop = true;
-            new Thread(() =>
-            {
-                do
-            {
-                armaComS.Read(messageBuffer, 0, messageBuffer.Length);
-                messageChunk = Encoding.UTF8.GetString(messageBuffer);
-                messageBuilder.Append(messageChunk);
-                messageBuffer = new byte[messageBuffer.Length];
-                response = messageBuilder.ToString();
-                if (response == "ARMA READY") { button3.BackColor = Color.Lime; loop = false; }
-            }
-            while (loop == true);
-            }).Start();
-            
-
+            ServerWait(armaComS, "ARMA READY", button3); 
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            button12.BackColor = Color.Orange;
-            new Thread(() =>
-            {
-            byte[] messageBytes = Encoding.UTF8.GetBytes("ARMA READY");
-            armaComC.Write(messageBytes, 0, messageBytes.Length);
-            }).Start();
-            button12.BackColor = Color.Lime;
+            ClientSend(armaComC, "ARMA READY", button12);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new Thread(() =>
-            {
-                button4.BackColor = Color.Orange;
-            //delphiComS.WaitForConnection();
-                byte[] messageBytes = Encoding.UTF8.GetBytes("AAR READY");
-                delphiComS.Write(messageBytes, 0, messageBytes.Length);
-            ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
-            button4.BackColor = Color.Lime;
-            }).Start();
+            ServerSend(delphiComS, "AAR READY", button4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            StringBuilder messageBuilder = new StringBuilder();
-            var response = "";
-            string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[5];
-            button5.BackColor = Color.Orange;
-            
-            new Thread(() =>
-            {
-                do
-                {
-                    //delphiComC.Connect();
-                    delphiComC.WaitForPipeDrain();
-                    delphiComC.Read(messageBuffer, 0, messageBuffer.Length);
-                    messageChunk = Encoding.UTF8.GetString(messageBuffer);
-                    messageBuilder.Append(messageChunk);
-                    messageBuffer = new byte[messageBuffer.Length];
-                    response = messageBuilder.ToString();
-                    
-                }
-                while ( (!delphiComC.IsMessageComplete) && (response == "AAR READY"));
-                button5.BackColor = Color.Lime;
-                button4.BackColor = Color.Lime;
-            }).Start();
-
-
+            ClientWait(delphiComC, "AAR READY", button5);
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            ClientSetup();
         }
     }
     
