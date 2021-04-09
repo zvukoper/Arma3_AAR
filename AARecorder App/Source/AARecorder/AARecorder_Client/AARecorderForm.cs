@@ -61,7 +61,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
             StringBuilder messageBuilder = new StringBuilder();
             var response = "";
             string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[5];
+            byte[] messageBuffer = new byte[14];
             theButton.BackColor = Color.Orange;
 
             new Thread(() =>
@@ -77,7 +77,15 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 }
                 while ((!thePipe.IsMessageComplete) && (response == theMessage));
                 theButton.BackColor = Color.Lime;
+                Console.WriteLine(response);
+
+                if (response == "REQ_RECORD____")
+                {
+                    button8.BackColor = Color.Red;
+                }
+
             }).Start();
+
         }
 
         private void ServerSend(NamedPipeServerStream thePipe, string theMessage, Button theButton)
@@ -87,7 +95,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 theButton.BackColor = Color.Lime;
                 byte[] messageBytes = Encoding.UTF8.GetBytes(theMessage);
                 thePipe.Write(messageBytes, 0, messageBytes.Length);
-                ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
+                //ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
                 theButton.BackColor = Color.Lime;
             }).Start();
         }
@@ -115,7 +123,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
             StringBuilder messageBuilder = new StringBuilder();
             var response = "";
             string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[5];
+            byte[] messageBuffer = new byte[14];
             theButton.BackColor = Color.Orange;
 
             new Thread(() =>
@@ -141,7 +149,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 theButton.BackColor = Color.Lime;
                 byte[] messageBytes = Encoding.UTF8.GetBytes(theMessage);
                 thePipe.Write(messageBytes, 0, messageBytes.Length);
-                ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
+                //ConsoleOutput.Items.Add(string.Format("Sending AAR READY to delphiComS {0}", delphiComC.IsConnected));
                 theButton.BackColor = Color.Lime;
             }).Start();
         }
@@ -180,27 +188,42 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ServerWait(armaComS, "ARMA READY", button3); 
+            ServerWait(armaComS, "ARMA_READY____", button3); 
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ClientSend(armaComC, "ARMA READY", button12);
+            ClientSend(armaComC, "ARMA_READY____", button12);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ServerSend(delphiComS, "AAR READY", button4);
+            ServerSend(delphiComS, "AAR_READY_____", button4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ClientWait(delphiComC, "AAR READY", button5);
+            ClientWait(delphiComC, "AAR_READY_____", button5); //______________
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             ClientSetup();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ServerWait(armaComS, "REQ_RECORD____", button6);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ClientSend(armaComC, "REQ_RECORD____", button7);
         }
     }
     

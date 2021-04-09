@@ -244,6 +244,7 @@
             this.button8.TabIndex = 12;
             this.button8.Text = "Received RECORD@aCom";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -253,6 +254,7 @@
             this.button7.TabIndex = 11;
             this.button7.Text = "Send RECORD@aCom";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -262,6 +264,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Wait for Command@aCom";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
