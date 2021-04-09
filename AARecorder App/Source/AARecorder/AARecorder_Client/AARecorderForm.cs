@@ -47,21 +47,24 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         }
 
-        NamedPipeServerStream armaDataS;
-        NamedPipeServerStream delphiDataS;
+        NamedPipeServerStream armaDataS; //4096﻿ 
+        NamedPipeServerStream delphiDataS; //4096﻿ 
         NamedPipeServerStream delphiComS;
         NamedPipeServerStream armaComS;
 
-        NamedPipeClientStream armaDataC;
-        NamedPipeClientStream delphiDataC;
+        NamedPipeClientStream armaDataC; //4096﻿ 
+        NamedPipeClientStream delphiDataC; //4096﻿ 
         NamedPipeClientStream delphiComC;
         NamedPipeClientStream armaComC;
+
+        //server funciton to record data from arma must receive the data byte length as a parameter and prepare the byte array
 
         private void ServerWait(NamedPipeServerStream thePipe, string theMessage, Button theButton) {
             StringBuilder messageBuilder = new StringBuilder();
             var response = "";
+            var bufferSize = Encoding.UTF8.GetBytes(theMessage).Length;
             string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[14];
+            byte[] messageBuffer = new byte[bufferSize];
             theButton.BackColor = Color.Orange;
 
             new Thread(() =>
@@ -79,11 +82,12 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 theButton.BackColor = Color.Lime;
                 Console.WriteLine(response);
 
-                if (response == "REQ_RECORD____")
+                switch (response)
                 {
-                    button8.BackColor = Color.Red;
+                    case "REQUESTING_RECORD":
+                        button8.BackColor = Color.Red;
+                        break;
                 }
-
             }).Start();
 
         }
@@ -123,7 +127,8 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
             StringBuilder messageBuilder = new StringBuilder();
             var response = "";
             string messageChunk = string.Empty;
-            byte[] messageBuffer = new byte[14];
+            var bufferSize = Encoding.UTF8.GetBytes(theMessage).Length;
+            byte[] messageBuffer = new byte[bufferSize];
             theButton.BackColor = Color.Orange;
 
             new Thread(() =>
@@ -188,22 +193,22 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ServerWait(armaComS, "ARMA_READY____", button3); 
+            ServerWait(armaComS, "ARMA READY", button3); 
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ClientSend(armaComC, "ARMA_READY____", button12);
+            ClientSend(armaComC, "ARMA_READY", button12);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ServerSend(delphiComS, "AAR_READY_____", button4);
+            ServerSend(delphiComS, "AAR_READY", button4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ClientWait(delphiComC, "AAR_READY_____", button5); //______________
+            ClientWait(delphiComC, "AAR_READY", button5); //______________
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -213,7 +218,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button6_Click(object sender, EventArgs e)
         {
-            ServerWait(armaComS, "REQ_RECORD____", button6);
+            ServerWait(armaComS, "REQUESTING RECORD", button6);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -223,7 +228,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ClientSend(armaComC, "REQ_RECORD____", button7);
+            ClientSend(armaComC, "REQUESTING_RECORD", button7);
         }
     }
     
