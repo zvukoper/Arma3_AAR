@@ -2,6 +2,8 @@
 
 ## "Record. Replay. Learn."
 
+BI forum thread - https://forums.bohemia.net/forums/topic/234176-after-action-review-3-%E2%80%94-battle-replays-in-arma-3/
+
 ### Roadmap:
 
 * :ballot_box_with_check: Custom dll to link Arma3 with AARecorder.
