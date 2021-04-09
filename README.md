@@ -46,6 +46,7 @@ BI forum thread - https://forums.bohemia.net/forums/topic/234176-after-action-re
 * Sickboy for all the help with scripting, hosting, etc.
 * Jaynus for his revolutionary arma2lib.
 * Maca134 for his DLL export templates https://github.com/maca134/Maca134.Arma.DllExport
+* AndreyIM for helping with C# and etc.
 * BIS for ... for everything :)
 * CBA team for CBA mod.
 * -=Russian Alliance=- squad for all the painful testing of the system back in Arma2.
