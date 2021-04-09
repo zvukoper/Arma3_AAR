@@ -1,9 +1,6 @@
-# Arma3 After Action Review system
+# After Action Review 3 — battle replays in ARMA 3
 
-## Record your battle in Arma3. Replay and spectate later.
-
-This project is an attempt top revive the system from Arma2 https://github.com/zvukoper/Arma2AAR
-
+## "Record. Replay. Learn."
 
 ### Roadmap:
 
@@ -51,3 +48,5 @@ This project is an attempt top revive the system from Arma2 https://github.com/z
 * CBA team for CBA mod.
 * -=Russian Alliance=- squad for all the painful testing of the system back in Arma2.
 * All people out there on the forums who answered all my silly scripting questions.
+
+This project is an attempt top revive the system from Arma2 https://github.com/zvukoper/Arma2AAR
