@@ -23,7 +23,7 @@ namespace AARecorder_Server
         public AARecorder()
         {
             InitializeComponent();
-            Setup();
+            //Setup();
         }
 
         public async void Setup()
