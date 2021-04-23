@@ -20,6 +20,7 @@ BI forum thread - https://forums.bohemia.net/forums/topic/234176-after-action-re
 * :black_square_button: User-defined filenames.
 * :black_square_button: Rewind and fastforward a replay.
 * :black_square_button: Set playback start time.
+* :black_square_button: Extended options: Light Recording mode (no detailed animations, less performance impact).
 * :black_square_button: Extended options: simplified playback (no models, no units, only icons moving and shooting).
 * :black_square_button: Breakpoints with focus: define the event and the replay will pause automatically.
 * :black_square_button: Display mission date\time and playback time.
