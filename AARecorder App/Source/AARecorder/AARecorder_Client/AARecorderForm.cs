@@ -59,7 +59,26 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
         NamedPipeClientStream delphiComC;
         NamedPipeClientStream armaComC;
 
+        string MissionMapName = "myMissionName.chernarus";
+        string FilenameSuffix;
+        string GobalGameCommand;
         //server funciton to record data from arma must receive the data byte length as a parameter and prepare the byte array
+
+        public void MainCycle() {
+            // start command loop that constantly listens to armaComS pipe commands and assigns the command to the global variable "GobalGameCommand"
+            // do 1 sec
+            // read armaComS, if empty, skip
+            // if something, assign it to GobalGameCommand
+            // repeat
+
+            // start swticher loop that listens to the global variable "GobalGameCommand" and switches cases
+            // start thread
+            // switch
+            // case 0 = wait
+            // case ARMA READY = aar_ready(){just send ready}
+            // case REQUESTING RECORD = recording(){send rec ready, start blocking loop and wait for any data on armaDataS pipe and write to file in a thread, until GobalGameCommand is STOP or DATA is EOF = go back to ARMA READY,  or Client disconnects, GobalGameCommand=0 go back to NOTHING}
+            // case REQUESTING PLAYBACK = playback() {send_dir_list(); wait for dir; send_file_list(); wait for file name; load file and send FILE READY; Wait for GobalGameCommand READING; start blocking loop that Writes lines to pipe until GobalGameCommand STOP, end of file or disconnect GobalGameCommand=0}
+        }
 
         private void ServerWait(NamedPipeServerStream thePipe, string theMessage, Button theButton) {
             StringBuilder messageBuilder = new StringBuilder();
@@ -86,7 +105,7 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
                 switch (response)
                 {
-                    case "REQUESTING_RECORD":
+                    case "REQUESTING RECORD":
                         button8.BackColor = Color.Red;
                         break;
                 }
@@ -129,6 +148,42 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
                 armaComS.WaitForConnection();
                 button2.BackColor = Color.Lime;
             }).Start();
+        }
+
+        private void ReadPipeWriteFile()
+        {
+
+            // Пишем в файл
+            string pipe_data;
+            pipe_data = "SIMULATED DATA FROM PIPE";
+            string fileName;
+            FilenameSuffix = Filename_suffix.Text;
+            string directory = Application.StartupPath + "\\Replays\\" + MissionMapName + "\\";
+            if (FilenameSuffix != "")
+            {
+                fileName = DateTime.Now.ToString("yyyy.MM.dd_HHmmss") + "_" + MissionMapName + "_" + FilenameSuffix + ".aar";
+            }
+            else
+            {
+                fileName = DateTime.Now.ToString("yyyy.MM.dd_HHmmss") + "_" + MissionMapName + ".aar";
+            }
+
+            try
+            {
+                if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+
+                StreamWriter fs;
+                FileInfo fi = new FileInfo(directory + fileName);
+                fs = fi.AppendText();
+                fs.WriteLine(pipe_data);
+                fs.Close();
+                AndreyIM_Log.Logger.WriteLog(string.Format("WRITING {1}: {0}", pipe_data, fileName), Color.Orange);
+            }
+            catch (System.Exception)
+            {
+                //WriteLog(ex.Message, Color.Red);
+            }
+
         }
 
     private void ClientWait(NamedPipeClientStream thePipe, string theMessage, Button theButton)
@@ -207,12 +262,12 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ClientSend(armaComC, "ARMA_READY", button12);
+            ClientSend(armaComC, "ARMA READY", button12);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ServerSend(delphiComS, "AAR_READY", button4);
+            ServerSend(delphiComS, "AAR READY", button4);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -237,7 +292,25 @@ armaData = ["\\.\pipe\armaData"] call jayarma2lib_fnc_openPipe;
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ClientSend(armaComC, "REQUESTING_RECORD", button7);
+            ClientSend(armaComC, "REQUESTING RECORD", button7);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ReadPipeWriteFile();
+
+            
+            
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ClientWait(delphiComC, "READY FOR DATA", button10);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ServerSend(delphiComS, "READY FOR DATA", button9);
         }
     }
     

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ConsoleOutput = new System.Windows.Forms.ListBox();
             this.Activate = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Filename_suffix = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.myTextBoxLog = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -54,19 +55,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.myTextBoxLog = new System.Windows.Forms.RichTextBox();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ConsoleOutput
-            // 
-            this.ConsoleOutput.FormattingEnabled = true;
-            this.ConsoleOutput.Location = new System.Drawing.Point(0, 367);
-            this.ConsoleOutput.Name = "ConsoleOutput";
-            this.ConsoleOutput.Size = new System.Drawing.Size(776, 160);
-            this.ConsoleOutput.TabIndex = 0;
             // 
             // Activate
             // 
@@ -78,31 +68,21 @@
             this.Activate.Text = "Activate";
             this.Activate.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // Filename_suffix
             // 
-            this.textBox1.Location = new System.Drawing.Point(0, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 20);
-            this.textBox1.TabIndex = 2;
+            this.Filename_suffix.Location = new System.Drawing.Point(6, 16);
+            this.Filename_suffix.Name = "Filename_suffix";
+            this.Filename_suffix.Size = new System.Drawing.Size(289, 20);
+            this.Filename_suffix.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(315, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Replay filename";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(301, 18);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Auto";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label1.Text = "Replay filename suffix (Format: Mission.Map_suffix_date_time.aar)";
             // 
             // MainPanel
             // 
@@ -128,14 +108,39 @@
             this.MainPanel.Controls.Add(this.button3);
             this.MainPanel.Controls.Add(this.button2);
             this.MainPanel.Controls.Add(this.label2);
-            this.MainPanel.Controls.Add(this.textBox1);
-            this.MainPanel.Controls.Add(this.checkBox1);
-            this.MainPanel.Controls.Add(this.ConsoleOutput);
+            this.MainPanel.Controls.Add(this.Filename_suffix);
             this.MainPanel.Controls.Add(this.label1);
             this.MainPanel.Location = new System.Drawing.Point(12, 54);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(776, 527);
             this.MainPanel.TabIndex = 5;
+            // 
+            // myTextBoxLog
+            // 
+            this.myTextBoxLog.Location = new System.Drawing.Point(3, 367);
+            this.myTextBoxLog.Name = "myTextBoxLog";
+            this.myTextBoxLog.Size = new System.Drawing.Size(770, 160);
+            this.myTextBoxLog.TabIndex = 26;
+            this.myTextBoxLog.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(250, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Arma + armalib.dll";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(53, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "AARecorder App";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button19
             // 
@@ -217,8 +222,9 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(191, 23);
             this.button11.TabIndex = 15;
-            this.button11.Text = "Read Data@aDat";
+            this.button11.Text = "Read Data@aDat +rec";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -228,6 +234,7 @@
             this.button10.TabIndex = 14;
             this.button10.Text = "Wait for READY FOR DATA@dCom";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -237,6 +244,7 @@
             this.button9.TabIndex = 13;
             this.button9.Text = "Send READY FOR DATA@dCom";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -326,33 +334,6 @@
             this.button1.Text = "Activate";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "AARecorder App";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(250, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Arma + armalib.dll";
-            // 
-            // myTextBoxLog
-            // 
-            this.myTextBoxLog.Location = new System.Drawing.Point(415, 68);
-            this.myTextBoxLog.Name = "myTextBoxLog";
-            this.myTextBoxLog.Size = new System.Drawing.Size(348, 287);
-            this.myTextBoxLog.TabIndex = 26;
-            this.myTextBoxLog.Text = "";
-            // 
             // AARecorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,12 +352,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox ConsoleOutput;
         private System.Windows.Forms.CheckBox Activate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Filename_suffix;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
