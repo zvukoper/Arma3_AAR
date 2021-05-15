@@ -7,6 +7,7 @@ uses
   Dialogs, StdCtrls, ShellAPI, Registry;
 
 type
+//TODO: No form file (DFM missing). Create a new DFM file using that https://stackoverflow.com/questions/6200163/delphi-dfm-not-found
   TAAR_client = class(TForm)
     Console: TMemo;
     Button1: TButton;
